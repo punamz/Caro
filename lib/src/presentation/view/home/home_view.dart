@@ -21,7 +21,7 @@ class HomeView extends GetView<HomeController> {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Find another player')),
+        appBar: AppBar(title: const Text('Find player')),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -29,7 +29,7 @@ class HomeView extends GetView<HomeController> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text('Select nearby player', style: context.textTheme.titleMedium),
+                child: Text('Connect with nearby player', style: context.textTheme.titleMedium),
               ),
               const SizedBox(height: 10),
               Expanded(
@@ -43,8 +43,7 @@ class HomeView extends GetView<HomeController> {
                           onDisconnect: controller.stopEndpoint,
                           onStartGame: (device, size) {
                             controller.sendMessage(device, '${Constant.startGameCode}$size');
-                            Get.toNamed(GameView.routeName,
-                                arguments: GameArgument(device, false, size));
+                            Get.toNamed(GameView.routeName, arguments: GameArgument(device, false, size));
                           },
                         ),
                       )),

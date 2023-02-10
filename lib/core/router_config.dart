@@ -20,6 +20,10 @@ List<GetPage> routers = [
   GetPage(
     name: GameView.routeName,
     page: () => const GameView(),
-    binding: BindingsBuilder(() => Get.lazyPut<GameController>(() => GameController())),
+    binding: BindingsBuilder(
+      () => Get.lazyPut<GameController>(() => GameController(), tag: '${++gameCtrlTag}'),
+    ),
   ),
 ];
+
+int gameCtrlTag = 0;

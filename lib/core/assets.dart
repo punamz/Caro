@@ -3,7 +3,10 @@ class IconAssets {
   static const String oChar = 'assets/icons/o_char.png';
 }
 
-class ImageAssets {}
+class ImageAssets {
+  static const String background = 'assets/images/background.jpg';
+  static const String loginPic = 'assets/images/login_pic.png';
+}
 
 class AnimationAssets {
   static const String loading = 'assets/animations/loading.json';
