@@ -1,4 +1,5 @@
 import 'package:caro_game/core/assets.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -11,7 +12,7 @@ class DiscoveringWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Text('Discovering'),
+        Text(S.of(context).discovering),
         const SizedBox(height: 10),
         Lottie.asset(AnimationAssets.finding, height: 100),
       ],

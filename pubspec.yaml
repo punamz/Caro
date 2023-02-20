@@ -8,6 +8,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
   cupertino_icons: ^1.0.5
   get: ^4.6.5
@@ -15,10 +18,9 @@ dependencies:
   permission_handler: ^10.2.0
   nearby_connections: ^3.2.0
   lottie: ^2.2.0
-  extended_image: ^7.0.0
+  extended_image: ^7.0.1
   assets_audio_player: ^3.0.6
-  device_info_plus: ^8.0.0
-
+  device_info_plus: ^8.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,3 +33,5 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/audios/
+flutter_intl:
+  enabled: true

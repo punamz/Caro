@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:caro_game/core/constrant.dart';
 import 'package:caro_game/core/global_value.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/domain/model/device_model.dart';
 import 'package:caro_game/src/domain/model/game_argument.dart';
 import 'package:caro_game/src/presentation/view/game/game_view.dart';
@@ -221,8 +222,8 @@ class HomeController extends GetxController {
             if (status != Status.CONNECTED && Get.isBottomSheetOpen == true) {
               Get.back(result: false);
               Get.snackbar(
-                'Disconnect',
-                '${deviceFound[i].name} rejected connect with you',
+                S.of(Get.context!).disconnected,
+                '${deviceFound[i].name} ${S.of(Get.context!).reject_connect_with_you}',
                 backgroundColor: Get.theme.colorScheme.error,
                 colorText: Get.theme.colorScheme.onError,
               );

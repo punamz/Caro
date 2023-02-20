@@ -1,5 +1,6 @@
 import 'package:caro_game/core/constrant.dart';
 import 'package:caro_game/core/router_config.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/infrastructure/get_storage/local_database.dart';
 import 'package:caro_game/src/presentation/view/game/child_widget/exit_dialog.dart';
 import 'package:caro_game/src/presentation/view/game/child_widget/game_board_widget.dart';
@@ -37,12 +38,12 @@ class GameView extends GetView<GameController> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Obx(() => Text(
-                    'You: ${controller.yourScore.value}',
+                    '${S.of(context).you}: ${controller.yourScore.value}',
                     style: context.textTheme.apply(bodyColor: context.theme.colorScheme.primary).titleMedium,
                   )),
               const SizedBox(width: 50),
               Obx(() => Text(
-                    'Opponent : ${controller.partnerScore.value}',
+                    '${S.of(context).opponent} : ${controller.partnerScore.value}',
                     style: context.textTheme.apply(bodyColor: context.theme.colorScheme.error).titleMedium,
                   )),
             ],
@@ -58,7 +59,7 @@ class GameView extends GetView<GameController> {
                 PopupMenuItem(
                   child: Row(
                     children: [
-                      const Expanded(child: Text("Scroll to partner's move")),
+                      Expanded(child: Text(S.of(context).scroll_to_opponent_s_move)),
                       Obx(() => Switch(
                             value: controller.enableScroller.value,
                             onChanged: (value) {
@@ -72,7 +73,7 @@ class GameView extends GetView<GameController> {
                 PopupMenuItem(
                   child: Row(
                     children: [
-                      const Expanded(child: Text('Music volume')),
+                      Expanded(child: Text(S.of(context).music_volume)),
                       Obx(() => Slider(
                             value: controller.musicVolume.value,
                             onChangeEnd: (value) => Storage.instance.writeDouble(Constant.stoMusicVolume, value),
@@ -87,7 +88,7 @@ class GameView extends GetView<GameController> {
                 PopupMenuItem(
                   child: Row(
                     children: [
-                      const Expanded(child: Text('Sound effects')),
+                      Expanded(child: Text(S.of(context).sound_effect)),
                       Obx(() => Slider(
                             value: controller.soundEffect.value,
                             onChangeEnd: (value) => Storage.instance.writeDouble(Constant.stoSoundEffect, value),
@@ -114,7 +115,7 @@ class GameView extends GetView<GameController> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                               child: Text(
-                                'Your turn',
+                                S.of(context).your_turn,
                                 style:
                                     context.textTheme.apply(bodyColor: context.theme.colorScheme.onPrimary).bodyLarge,
                               ),
@@ -131,7 +132,7 @@ class GameView extends GetView<GameController> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                               child: Text(
-                                'Opponent turn',
+                                S.of(context).opponent_turn,
                                 style: context.textTheme.apply(bodyColor: context.theme.colorScheme.onError).bodyLarge,
                               ),
                             ),

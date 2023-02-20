@@ -1,3 +1,4 @@
+import 'package:caro_game/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nearby_connections/nearby_connections.dart';
@@ -20,13 +21,13 @@ class ReceiveConnectReqWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Name: ${info.endpointName}',
+              '${S.of(context).name}: ${info.endpointName}',
               style: context.textTheme.titleMedium,
             ),
             const SizedBox(height: 5),
             Text('Id: $id'),
             const SizedBox(height: 5),
-            Text('Token: ${info.authenticationToken}'),
+            Text('${S.of(context).token}: ${info.authenticationToken}'),
             const SizedBox(height: 15),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -37,7 +38,7 @@ class ReceiveConnectReqWidget extends StatelessWidget {
                 Get.back(result: true);
                 onAccept();
               },
-              child: const Text('Accept Connection'),
+              child: Text(S.of(context).accept_connection),
             ),
             const SizedBox(height: 15),
             OutlinedButton(
@@ -50,7 +51,7 @@ class ReceiveConnectReqWidget extends StatelessWidget {
                 Get.back(result: false);
                 onReject();
               },
-              child: const Text('Reject Connection'),
+              child: Text(S.of(context).reject_connection),
             ),
           ],
         ),

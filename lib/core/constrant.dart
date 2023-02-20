@@ -6,6 +6,7 @@ class Constant {
   static const String stoScrollMap = 'stoScrollMap';
   static const String stoMusicVolume = 'stoMusicVolume';
   static const String stoSoundEffect = 'stoSoundEffect';
+  static const String stoLang = 'stoLang';
 
   /// for bluetooth mess
   static const String startGameCode = 'START_GAME';

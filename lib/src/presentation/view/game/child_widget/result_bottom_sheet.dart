@@ -1,5 +1,6 @@
 import 'package:caro_game/core/assets.dart';
 import 'package:caro_game/core/enum_value.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:lottie/lottie.dart';
@@ -8,8 +9,7 @@ class ResultBottomSheet extends StatelessWidget {
   final Winner? winner;
   final void Function() onExit;
   final void Function() onRematch;
-  const ResultBottomSheet(
-      {Key? key, required this.winner, required this.onExit, required this.onRematch})
+  const ResultBottomSheet({Key? key, required this.winner, required this.onExit, required this.onRematch})
       : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class ResultBottomSheet extends StatelessWidget {
               backgroundColor: context.theme.colorScheme.primaryContainer,
             ),
             onPressed: onRematch,
-            child: const Text('Play again'),
+            child: Text(S.of(context).play_again),
           ),
           const SizedBox(height: 10),
           ElevatedButton(
@@ -45,7 +45,7 @@ class ResultBottomSheet extends StatelessWidget {
               backgroundColor: context.theme.colorScheme.error,
             ),
             onPressed: onExit,
-            child: const Text('Exit room'),
+            child: Text(S.of(context).exit_room_title),
           ),
           const SizedBox(height: 30),
         ],

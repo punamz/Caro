@@ -1,3 +1,4 @@
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/presentation/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,12 +10,12 @@ class OpponentDisconnectDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Disconnected'),
+      title: Text(S.of(context).disconnected),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('$opponentName has lost connection with you'),
+          Text('$opponentName ${S.of(context).disconnected_message}'),
         ],
       ),
       actions: <Widget>[
@@ -24,7 +25,7 @@ class OpponentDisconnectDialog extends StatelessWidget {
             backgroundColor: context.theme.colorScheme.primaryContainer,
           ),
           onPressed: () => Get.until((route) => Get.currentRoute == HomeView.routeName),
-          child: const Text('Ok'),
+          child: Text(S.of(context).ok),
         ),
       ],
     );

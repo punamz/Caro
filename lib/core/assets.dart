@@ -1,6 +1,8 @@
 class IconAssets {
   static const String xChar = 'assets/icons/x_char.png';
   static const String oChar = 'assets/icons/o_char.png';
+  static const String vietnam = 'assets/icons/vietnam.png';
+  static const String english = 'assets/icons/english.png';
 }
 
 class ImageAssets {

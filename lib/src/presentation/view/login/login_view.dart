@@ -1,4 +1,5 @@
 import 'package:caro_game/core/assets.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/presentation/view/home/home_view.dart';
 import 'package:caro_game/src/presentation/view/login/login_ctrl.dart';
 import 'package:extended_image/extended_image.dart';
@@ -44,10 +45,21 @@ class LoginView extends GetView<LoginController> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Obx(() => Switch(
+                            value: controller.enLang.value,
+                            onChanged: controller.changeLanguage,
+                            activeThumbImage: const ExtendedAssetImageProvider(IconAssets.english),
+                            inactiveThumbImage: const ExtendedAssetImageProvider(IconAssets.vietnam),
+                            inactiveTrackColor: context.theme.colorScheme.primary,
+                          )),
+                    ),
                     Center(child: ExtendedImage.asset(ImageAssets.loginPic, height: 100)),
                     const SizedBox(height: 10),
                     Text(
-                      'Enter your name:',
+                      S.of(context).enter_your_name,
+                      // 'Enter your name:',
                       style: context.theme.textTheme
                           .apply(bodyColor: context.theme.colorScheme.primaryContainer)
                           .labelMedium,
@@ -75,8 +87,8 @@ class LoginView extends GetView<LoginController> {
                       onPressed: () async {
                         if (controller.nameController.text.trim().isEmpty) {
                           Get.snackbar(
-                            'Oops!',
-                            'Enter your name before play game',
+                            S.of(context).empty_name_title,
+                            S.of(context).empty_name_message,
                             backgroundColor: context.theme.colorScheme.error,
                             colorText: context.theme.colorScheme.onError,
                           );
@@ -103,7 +115,7 @@ class LoginView extends GetView<LoginController> {
                         backgroundColor: context.theme.colorScheme.primaryContainer,
                         foregroundColor: context.theme.colorScheme.onPrimaryContainer,
                       ),
-                      child: const Text('GOGO'),
+                      child: Text(S.of(context).login),
                     )
                   ],
                 ),

@@ -6,6 +6,7 @@ import 'package:caro_game/core/assets.dart';
 import 'package:caro_game/core/constrant.dart';
 import 'package:caro_game/core/enum_value.dart';
 import 'package:caro_game/core/global_value.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/domain/model/device_model.dart';
 import 'package:caro_game/src/domain/model/game_argument.dart';
 import 'package:caro_game/src/domain/model/point.dart';
@@ -110,8 +111,8 @@ class GameController extends GetxController {
     });
     _subscriptionRequestRematch = GlobalValue.partnerRequestRematch.listen((event) {
       Get.snackbar(
-        'Rematch',
-        '${device.name} is ready for the new game!',
+        S.of(Get.context!).rematch_title,
+        '${device.name} ${S.of(Get.context!).rematch_message}',
         backgroundColor: Get.theme.colorScheme.primary,
         colorText: Get.theme.colorScheme.onPrimary,
       );
@@ -129,8 +130,7 @@ class GameController extends GetxController {
     musicVolume.call(Storage.instance.readDouble(Constant.stoMusicVolume) ?? 1);
     soundEffect.call(Storage.instance.readDouble(Constant.stoSoundEffect) ?? 1);
     enableScroller.call(Storage.instance.readBool(Constant.stoScrollMap) ?? true);
-    assetsAudioPlayer.open(Audio(AudioAssets.background),
-        volume: musicVolume.value, loopMode: LoopMode.single);
+    assetsAudioPlayer.open(Audio(AudioAssets.background), volume: musicVolume.value, loopMode: LoopMode.single);
   }
 
   @override
@@ -205,8 +205,7 @@ class GameController extends GetxController {
     isMe ? ++yourScore.value : ++partnerScore.value;
     showResult.call(true);
 
-    AssetsAudioPlayer.playAndForget(Audio(isMe ? AudioAssets.win : AudioAssets.lose),
-        volume: soundEffect.value);
+    AssetsAudioPlayer.playAndForget(Audio(isMe ? AudioAssets.win : AudioAssets.lose), volume: soundEffect.value);
   }
 
   /// check đường chéo từ trái trên sang phải dưới
@@ -227,8 +226,7 @@ class GameController extends GetxController {
     int result = _compare(data, isMyStep ? CellValue.xChar : CellValue.oChar);
     if (!result.isNegative) {
       for (int i = 0; i < 5; ++i) {
-        mapData[startX + result - i][startY + result - i] =
-            isMyStep ? CellValue.xWinner : CellValue.oWinner;
+        mapData[startX + result - i][startY + result - i] = isMyStep ? CellValue.xWinner : CellValue.oWinner;
       }
       mapData.refresh();
       return true;
@@ -253,8 +251,7 @@ class GameController extends GetxController {
     int result = _compare(data, isMyStep ? CellValue.xChar : CellValue.oChar);
     if (!result.isNegative) {
       for (int i = 0; i < 5; ++i) {
-        mapData[startX + result - i][startY - result + i] =
-            isMyStep ? CellValue.xWinner : CellValue.oWinner;
+        mapData[startX + result - i][startY - result + i] = isMyStep ? CellValue.xWinner : CellValue.oWinner;
       }
       mapData.refresh();
       return true;
@@ -279,8 +276,7 @@ class GameController extends GetxController {
     int result = _compare(data, isMyStep ? CellValue.xChar : CellValue.oChar);
     if (!result.isNegative) {
       for (int i = 0; i < 5; ++i) {
-        mapData[coordinateX][startY + result - i] =
-            isMyStep ? CellValue.xWinner : CellValue.oWinner;
+        mapData[coordinateX][startY + result - i] = isMyStep ? CellValue.xWinner : CellValue.oWinner;
       }
       mapData.refresh();
       return true;
@@ -305,8 +301,7 @@ class GameController extends GetxController {
     int result = _compare(data, isMyStep ? CellValue.xChar : CellValue.oChar);
     if (!result.isNegative) {
       for (int i = 0; i < 5; ++i) {
-        mapData[startX + result - i][coordinateY] =
-            isMyStep ? CellValue.xWinner : CellValue.oWinner;
+        mapData[startX + result - i][coordinateY] = isMyStep ? CellValue.xWinner : CellValue.oWinner;
       }
       mapData.refresh();
       return true;

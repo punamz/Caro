@@ -1,3 +1,4 @@
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/presentation/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,12 +10,12 @@ class OpponentExitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Opponent exit'),
+      title: Text(S.of(context).opponent_exit_title),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('$opponentName has left the room'),
+          Text('$opponentName ${S.of(context).opponent_exit_message}'),
         ],
       ),
       actions: <Widget>[
@@ -24,7 +25,7 @@ class OpponentExitDialog extends StatelessWidget {
             backgroundColor: context.theme.colorScheme.primaryContainer,
           ),
           onPressed: () => Get.until((route) => Get.currentRoute == HomeView.routeName),
-          child: const Text('Ok'),
+          child: Text(S.of(context).ok),
         ),
       ],
     );

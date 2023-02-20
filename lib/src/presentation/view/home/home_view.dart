@@ -1,4 +1,5 @@
 import 'package:caro_game/core/constrant.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/domain/model/game_argument.dart';
 import 'package:caro_game/src/presentation/view/game/game_view.dart';
 import 'package:caro_game/src/presentation/view/home/child_widget/device_item_widget.dart';
@@ -21,7 +22,7 @@ class HomeView extends GetView<HomeController> {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(title: const Text('Find player')),
+        appBar: AppBar(title: Text(S.of(context).find_player)),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -29,7 +30,7 @@ class HomeView extends GetView<HomeController> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text('Connect with nearby player', style: context.textTheme.titleMedium),
+                child: Text(S.of(context).connect_with_nearby_player, style: context.textTheme.titleMedium),
               ),
               const SizedBox(height: 10),
               Expanded(

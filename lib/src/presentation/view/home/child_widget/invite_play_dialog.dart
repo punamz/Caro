@@ -1,3 +1,4 @@
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/domain/model/device_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -9,23 +10,19 @@ class InvitePlayDialog extends StatelessWidget {
   final void Function(DeviceModel) onDenice;
 
   const InvitePlayDialog(
-      {Key? key,
-      required this.device,
-      required this.onPlay,
-      required this.onDenice,
-      required this.mapSize})
+      {Key? key, required this.device, required this.onPlay, required this.onDenice, required this.mapSize})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Game invitation'),
+      title: Text(S.of(context).game_invitation_title),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text('${device.name} send you a game invite'),
-          Text('map size: $mapSize×$mapSize'),
+          Text('${device.name} ${S.of(context).game_invitation_message}'),
+          Text('${S.of(context).map_size}: $mapSize×$mapSize'),
         ],
       ),
       actions: [
@@ -34,7 +31,7 @@ class InvitePlayDialog extends StatelessWidget {
             Get.back();
             onDenice(device);
           },
-          child: const Text('Denice'),
+          child: Text(S.of(context).denice),
         ),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -45,7 +42,7 @@ class InvitePlayDialog extends StatelessWidget {
             Get.back();
             onPlay(device);
           },
-          child: const Text('Play'),
+          child: Text(S.of(context).play),
         ),
       ],
     );

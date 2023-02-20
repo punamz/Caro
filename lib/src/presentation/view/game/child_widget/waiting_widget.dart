@@ -1,4 +1,5 @@
 import 'package:caro_game/core/assets.dart';
+import 'package:caro_game/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -17,7 +18,7 @@ class WaitingWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              'Waiting for $opponentName to accept game invitation',
+              '${S.of(context).waiting_for} $opponentName ${S.of(context).waiting_accept_invitation}',
               style: context.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),

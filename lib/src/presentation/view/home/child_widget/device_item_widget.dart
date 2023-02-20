@@ -1,3 +1,4 @@
+import 'package:caro_game/generated/l10n.dart';
 import 'package:caro_game/src/domain/model/device_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -47,7 +48,7 @@ class DeviceItemWidget extends StatelessWidget {
                     backgroundColor: context.theme.colorScheme.secondaryContainer, // foreground
                   ),
                   onPressed: device.connecting == true ? null : () => onConnect(device),
-                  child: Text(device.connecting == true ? 'Connecting' : 'Connect'),
+                  child: Text(device.connecting == true ? S.of(context).connecting : S.of(context).connect),
                 )
               else ...[
                 ElevatedButton(
@@ -56,7 +57,7 @@ class DeviceItemWidget extends StatelessWidget {
                     backgroundColor: context.theme.colorScheme.error, // foreground
                   ),
                   onPressed: () => onDisconnect(device),
-                  child: const Text('Disconnect'),
+                  child: Text(S.of(context).disconnect),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -64,7 +65,7 @@ class DeviceItemWidget extends StatelessWidget {
                     backgroundColor: context.theme.colorScheme.primaryContainer,
                   ),
                   onPressed: _onStart,
-                  child: const Text('Start Game'),
+                  child: Text(S.of(context).start_game),
                 ),
               ],
             ],
@@ -82,12 +83,12 @@ class _SelectMapSizeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Map size'),
+      title: Text(S.of(context).map_size),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Obx(() => Text('Set the map size to: ${_sized.value}×${_sized.value}')),
+          Obx(() => Text('${S.of(context).set_map_size_to} ${_sized.value}×${_sized.value}')),
           Obx(() => Slider(
                 min: 5,
                 max: 50,
@@ -105,7 +106,7 @@ class _SelectMapSizeDialog extends StatelessWidget {
           onPressed: () {
             Get.back(result: _sized.value);
           },
-          child: const Text('Comfirm'),
+          child: Text(S.of(context).confirm),
         ),
       ],
     );
